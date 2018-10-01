@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/site.css" type="text/css">
+    <title>DGpigeon</title>
+</head>
+<body>
+    <header>
+            <nav>
+                <ul>
+                    <form id="search" action="/users/find">
+                        <input id="input" type="text" name="text" placeholder="Search for friend">
+                        <input id="submit" type="submit" value="           ">
+                    </form>
+                    {{#if user}}
+                    <li id="profile">
+                        <a href='/users/profile/{{user._id}}'><img id="my-picture" src="{{user.profileImage}}"> {{user.firstName}}</a>
+                    </li>
+                    <li id="home">
+                        <a href="/">Home</a>
+                    </li>
+                    <li id="friend">
+                        <a href="/users/friends/find">Find friends</a>
+                    </li>
+                    <li>
+                        <a href="/users/friends/request">Friends Request {{user.request.length}}</a>
+                    </li>
+                    <li id="settings">
+                        <a href='/users/friends/list'>Friends</a>
+                    </li>
+                    <li>
+                        <a class="button" href="javascript:document.getElementById('logout-form').submit()">Logout</a>
+                    </li>
+                    <form id="logout-form" action="/users/logout" method="POST"></form>
+                    {{else}}
+                    <li id="login">
+                        <a href="/users/login">Login |</a>
+                    </li>
+                    <li >
+                        <a href="/users/register">Register</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </nav>
+    </header>
+
+    <main>
+        {{{body}}}
+    </main>
+</body>
+</html>

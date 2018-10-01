@@ -1,0 +1,13 @@
+<div class="user-login">
+    {{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
+    <h2>Login</h2>
+    <form id="form-login" method="POST">
+        <label for="email"><img src="/img/email.png"></label>
+        <input type="email" name="email" placeholder="Enter Email">
+        <label for="password"><img src="/img/lock.png"></label>
+        <input type="password" name="password" placeholder="Password">
+        <input class="btn" type="submit" value="Login">
+    </form>
+</div>

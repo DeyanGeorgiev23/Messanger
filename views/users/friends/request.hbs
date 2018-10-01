@@ -1,0 +1,15 @@
+<div class="suggestion-friedns-find">
+    <h2>Friends requests</h2>
+</div>
+<div class="friends-find">
+    {{#each users}}
+    <form class="form-friends-find" method="POST">
+        {{> user}}
+        <input type="hidden" name="Id" value="{{this._id}}" />
+        <input type="submit" value="Decline" name="decline">
+        <input type="submit" value="Accept" name="accept">
+    </form>
+    {{else}}
+    <p style="text-align:center; padding:2rem; font-family:sans-serif">No friend requests</p>
+    {{/each}}
+</div>

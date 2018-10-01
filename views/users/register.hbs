@@ -1,0 +1,19 @@
+<div class="user-register">
+    {{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
+    <h2>Register</h2>
+    <form id="form-login" method="POST">
+        <label for="email"><img src="/img/email.png"></label>
+        <input type="email" name="email" placeholder="Enter Email">
+        <label for="password"><img src="/img/lock.png"></label>
+        <input type="password" name="password" placeholder="Password">
+        <label for="confirmedPassword"><img src="/img/lock.png"></label>
+        <input type="password" name="confirmedPassword" placeholder="Confirmed Password">
+        <label for="firstName"><img src="/img/user-name.png"></label>
+        <input type="text" name="firstName" placeholder="First Name">
+        <label for="lastName"><img src="/img/user-name.png"></label>
+        <input type="text" name="lastName" placeholder="Last Name">
+        <input class="btn" type="submit" value="Register">
+    </form>
+</div>

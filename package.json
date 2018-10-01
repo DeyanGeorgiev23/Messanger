@@ -1,0 +1,23 @@
+{
+  "name": "DGpigeot",
+  "version": "1.0.0",
+  "description": "Messenger",
+  "main": "index.js",
+  "author": "Deyan Georgiev",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "cookie-parser": "1.4.3",
+    "email-validator": "^2.0.4",
+    "express": "4.15.3",
+    "express-handlebars": "3.0.0",
+    "express-session": "1.15.3",
+    "mongoose": "4.10.4",
+    "multer": "1.3.1",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0"
+  }
+}

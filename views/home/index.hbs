@@ -1,0 +1,55 @@
+{{#if user}}
+    <div class="profile-side">
+    {{#if userFr}}
+        <h4 id="user-name"><img id="my-pic" src="{{userFr.profileImage}}"> {{userFr.firstName}} {{userFr.lastName}}</h4>
+        <div class="links">
+            <a href="users/friends/find"><img src="img/users.png" width="18rem"> Find friends</a>
+            <a href="users/friends/list"><img src="/img/your-friends.png" width="18"> Your friends</a>
+        </div>
+        <img src="/img/message.png"> Messanger
+    {{#each userFr.friends}}
+        <div class="friends">
+            <a href="users/friends/chat/{{this._id}}"><img src="{{this.profileImage}}"> {{this.firstName}} {{this.lastName}}</a>
+        </div>
+    {{/each}}
+    {{/if}}
+    </div>
+
+    <div class="post-container-index">
+        <div class="container-header">
+            <h3>Write a post!</h3>
+            <h3>Add picture/Video!</h3>
+        </div>
+        <form class="form-post" method="POST" action="/users/create/post" enctype='multipart/form-data'>
+            <label id="addPicture" for="addingPicture"><img src="/img/photo.png"></label>
+            <input type="file" name="img" accept='.jpg,.jpeg,.png'>
+            <textarea name="aboutPicture" placeholder="What do you think?"></textarea>
+            <input id="share" type="submit" value="Share">
+        </form>
+    </div>
+
+    {{#if post}}
+    {{#each post}}
+    <div class="picture-container-index">
+        <div class="picture-container-header-index">
+        {{> post}}
+        </div>
+        <div id="posted-img">
+            <img src="{{this.img}}"> 
+        </div>
+        <div class="likes">
+            <img src="/img/likes.png">
+            <small>{{this.likes}} likes</small>
+        <form method="POST" action="users/create/like">
+            <label for="like"><img src="/img/like.png"></label>
+            <input type="hidden" name="Id" value="{{this._id}}" />
+            {{#if currentUser}}
+            <input type="hidden" name="id" value="{{currentUser}}" />
+            {{/if}}
+            <input type="submit" name="like" value="Like">
+        </form>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+{{/if}}

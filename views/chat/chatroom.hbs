@@ -1,0 +1,29 @@
+<div class="chat-wrapper">
+    <div>
+        {{#if picture}}
+            <img src="{{picture}}">
+            <small>{{firstName}} {{lastName}}</small>
+        {{else}}
+            <small>{{firstName}} {{lastName}}</small>
+        {{/if}}            
+    </div>
+    <div id="message-wrapper">
+    {{#each text}}
+        <div class="message-row">
+        {{#if isCurrentUserMessage}}
+            <span class="thread-message right">{{this}}</span>
+        {{else}}
+            <span class="thread-message left">{{this}}</span>
+        {{/if}}
+        </div>
+    {{/each}}
+    </div>
+    <div id="chat-form">
+        <form method="post">
+            <textarea id="chat-textarea" name="message" placeholder="message"></textarea>
+            <input value="{{chatId}}" name="chatId" hidden />
+            <input value="{{userToChat}}" name="userToChat" hidden />
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="suggestion-friedns-find">
+    <h2>Your Friends</h2>
+</div>
+<div class="friends-find">
+     <div class="header-friends-find">
+         <img src="/img/your-friends.png" style="width:1.5rem; height: 1.5rem; margin-top: 0.9rem;">
+        <h3 style="margin-left:2.7rem;">Friends</h3>
+    </div>
+    {{#each users}}
+    <form action="/users/profile/remove" method="POST" class="form-friends-find">
+        {{> user}}
+        <input type="hidden" name="Id" value="{{this._id}}" />
+        <input type="submit" value="Remove">
+        <a href="/users/profile/{{this._id}}">View Profile</a>
+    </form>
+    {{else}}
+    <p style="text-align:center; font-family:sans-serif">You don't have Friends yet!</p>
+    {{/each}}
+</div>

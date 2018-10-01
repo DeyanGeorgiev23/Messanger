@@ -1,0 +1,24 @@
+<div class="settings-form-div">
+    <h3>Enter your personal info!</h3>
+    <form class="form-userData" method="POST" action="/users/profile/info">
+        <label for="town"><img src="/img/residence.png"></label>
+        <input type="text" name="town" placeholder="Enter Town">
+        <label for="school"><img src="/img/school.png"></label>
+        <input type="text" name="school" placeholder="Enter School">
+        <label for="about"><img src="/img/about.png"></label>
+        <textarea id="textarea-settings" type="text" name="about" placeholder="About you">{{about}}</textarea>
+        <label for="age"><img src="/img/age.png"></label>
+        <input type="number" name="age" placeholder="Enter Age">
+        <select name="gender">
+            <option name="Male">Male</option>
+            <option name="Female">Female</option>
+        </select>
+        <select id="relationship" name="relationship">
+            <option name="Single">Single</option>
+            <option name="In a relationship">In a relationship</option>
+            <option name="Engaged">Engaged</option>
+            <option name="Married">Married</option>
+        </select>
+        <input type="submit" value="Done" id="userData-btn">
+    </form>
+</div>

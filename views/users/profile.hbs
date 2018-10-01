@@ -1,0 +1,94 @@
+{{#if user}}
+    <div class="container">
+        <div class="back-ground">
+            <form method="POST" id="form-picture" enctype='multipart/form-data' action="/users/profile/{{user._id}}">
+                {{#if userPic}}
+                <img id="back" src="{{userPic.background}}">
+                {{else}}
+                <input id="back-ground-pic" type="file" name="backGroundImage" accept='.jpg,.jpeg,.png'>
+                {{/if}}
+                {{#if userPic}}
+                <img id="front" src="{{userPic.profilePic}}">{{userPic.firstName}} {{userPic.lastName}}
+                {{else}}
+                <input id="profile-pic-input" type="file" name="profileImage" accept='.jpg,.jpeg,.png'>
+                <input id="picBtn" type="submit" value="Save">
+                {{/if}}
+            </form>
+        </div>
+            {{#if userData}}
+            <div class="about">
+                <h2>Personal Info</h2>
+                <p><img src="/img/residence.png"> Residence - {{userData.town}}</p>
+                <p><img src="/img/school.png"> School - {{userData.school}}</p>
+                <p><img src="/img/about.png"> About - {{userData.about}}</p>
+                <p><img src="/img/age.png"> Age - {{userData.age}}</p>
+                <p><img src="/img/gender.png"> Gender - {{userData.gender}}</p>
+                <p><img src="/img/relationship.png"> Relationship - {{userData.relationship}}</p>
+                <p><img src="/img/time.png"> Join on: {{userData.join}}</p>
+            </div>
+            {{else}}
+            <div class="settings-form-div">
+                <h3>Enter your personal info!</h3>
+                <form class="form-userData" method="POST" action="/users/profile/info">
+                    <label for="town"><img src="/img/residence.png"></label>
+                    <input type="text" name="town" placeholder="Enter Town">
+                    <label for="school"><img src="/img/school.png"></label>
+                    <input type="text" name="school" placeholder="Enter School">
+                    <label for="about"><img src="/img/about.png"></label>
+                    <textarea id="textarea-settings" type="text" name="about" placeholder="About you">{{about}}</textarea>
+                    <label for="age"><img src="/img/age.png"></label>
+                    <input type="number" name="age" placeholder="Enter Age">
+                    <select name="gender">
+                        <option name="Male">Male</option>
+                        <option name="Female">Female</option>
+                    </select>
+                    <select id="relationship" name="relationship">
+                        <option name="Single">Single</option>
+                        <option name="In a relationship">In a relationship</option>
+                        <option name="Engaged">Engaged</option>
+                        <option name="Married">Married</option>
+                    </select>
+                    <input type="submit" value="Done" id="userData-btn">
+                </form>
+            </div>
+            {{/if}}
+    </div>
+
+    <div class="post-container">
+        <div class="container-header">
+            <h3>Write a post!</h3>
+            <h3>Add picture/Video!</h3>
+        </div>
+        <form class="form-post" method="POST" action="/users/create/post" enctype='multipart/form-data'>
+            <label id="addPicture" for="addingPicture"><img src="/img/photo.png"></label>
+            <input type="file" name="img" accept='.jpg,.jpeg,.png'>
+            <textarea name="aboutPicture" placeholder="What do you think?"></textarea>
+            <input id="share" type="submit" value="Share">
+        </form>
+    </div>
+
+    {{#if post}}
+    {{#each post}}
+    <div class="picture-container">
+        <div class="picture-container-header">
+        {{> post}}
+        </div>
+        <div id="posted-img">
+            <img src="{{this.img}}"> 
+        </div>
+        <div class="likes">
+            <img src="/img/likes.png">
+            <small>{{this.likes}} likes</small>
+        <form method="POST" action="/users/create/like">
+            <label for="like"><img src="/img/like.png"></label>
+            <input type="hidden" name="Id" value="{{this._id}}" />
+             {{#if currentUser}}
+            <input type="hidden" name="id" value="{{currentUser}}" />
+            {{/if}}
+            <input type="submit" name="like" value="Like">
+        </form>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+{{/if}}
